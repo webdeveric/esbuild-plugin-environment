@@ -71,6 +71,7 @@
     "esbuild-plugin-define": "^0.2.0"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18",
     "@vitest/coverage-c8": "^0.26.3",
     "@webdeveric/eslint-config-ts": "^0.6.0",
     "@webdeveric/prettier-config": "^0.2.0",

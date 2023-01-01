@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^18.11.18
   '@vitest/coverage-c8': ^0.26.3
   '@webdeveric/eslint-config-ts': ^0.6.0
   '@webdeveric/prettier-config': ^0.2.0
@@ -23,6 +24,7 @@ dependencies:
   esbuild-plugin-define: 0.2.0_esbuild@0.16.12
 
 devDependencies:
+  '@types/node': 18.11.18
   '@vitest/coverage-c8': 0.26.3
   '@webdeveric/eslint-config-ts': 0.6.0_iukboom6ndih5an6iafl45j2fe
   '@webdeveric/prettier-config': 0.2.0_prettier@2.8.1
