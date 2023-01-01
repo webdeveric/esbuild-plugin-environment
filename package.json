@@ -24,6 +24,7 @@
   "type": "commonjs",
   "main": "./dist/cjs/plugin.js",
   "types": "./dist/types/plugin.d.ts",
+  "packageManager": "pnpm@7.21.0",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -44,7 +45,7 @@
     "dist"
   ],
   "scripts": {
-    "lint": "eslint --fix ./*{js,cjs,mjs} ./src",
+    "lint": "eslint --fix ./*{js,cjs,mjs,mts} ./src",
     "clean": "rimraf ./dist/",
     "prebuild": "npm run clean",
     "build:cjs": "tsc -p ./tsconfig.cjs.json",
@@ -59,6 +60,7 @@
     "coverage": "vitest run  -c vitest.config.mts --coverage",
     "prepack": "npm run build",
     "prepublishOnly": "npm run typecheck && npm run spellcheck && npm run lint && npm run coverage",
+    "preinstall": "npx --yes check-package-manager --info",
     "prepare": "husky install"
   },
   "prettier": "@webdeveric/prettier-config",
@@ -66,24 +68,24 @@
     "esbuild": ">=0.15"
   },
   "dependencies": {
-    "esbuild-plugin-define": "^0.1.2"
+    "esbuild-plugin-define": "^0.2.0"
   },
   "devDependencies": {
-    "@vitest/coverage-c8": "^0.25.2",
-    "@webdeveric/eslint-config-ts": "^0.5.2",
+    "@vitest/coverage-c8": "^0.26.3",
+    "@webdeveric/eslint-config-ts": "^0.6.0",
     "@webdeveric/prettier-config": "^0.2.0",
-    "cspell": "^6.14.3",
-    "esbuild": "^0.16.7",
-    "eslint": "^8.28.0",
+    "check-package-manager": "^0.3.0",
+    "cspell": "^6.18.1",
+    "esbuild": "^0.16.12",
+    "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^3.3.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
     "husky": "^8.0.2",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.8.0",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
-    "typescript": "^4.9.3",
-    "vitest": "^0.25.2"
+    "typescript": "^4.9.4",
+    "vitest": "^0.26.3"
   }
 }
