@@ -1,4 +1,4 @@
-import type { PluginBuild } from 'esbuild';
+import { build, PluginBuild } from 'esbuild';
 
 import { describe, expect, it } from 'vitest';
 
@@ -36,6 +36,54 @@ describe.concurrent('environmentPlugin()', () => {
 
     expect(build.initialOptions?.define).toMatchObject({
       'process.env.PWD': JSON.stringify(process.cwd()),
+    });
+  });
+});
+
+describe('Usage with esbuild', () => {
+  it('Specifying default values', async () => {
+    const results = await build({
+      write: false,
+      stdin: {
+        contents: 'console.log(process.env.PLUGIN_TEST)',
+      },
+      plugins: [
+        environmentPlugin({
+          PLUGIN_TEST: 'true',
+        }),
+      ],
+    });
+
+    expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("true");');
+  });
+
+  describe('Specifying array of environment variable names', () => {
+    it('Undefined environment variables default to empty string', async () => {
+      const results = await build({
+        write: false,
+        stdin: {
+          contents: 'console.log(process.env.PLUGIN_TEST)',
+        },
+        plugins: [environmentPlugin(['PLUGIN_TEST'])],
+      });
+
+      expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("");');
+    });
+
+    it('Undefined environment variables default to empty string', async () => {
+      process.env.PLUGIN_TEST = 'true';
+
+      const results = await build({
+        write: false,
+        stdin: {
+          contents: 'console.log(process.env.PLUGIN_TEST)',
+        },
+        plugins: [environmentPlugin(['PLUGIN_TEST'])],
+      });
+
+      delete process.env.PLUGIN_TEST;
+
+      expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("true");');
     });
   });
 });
