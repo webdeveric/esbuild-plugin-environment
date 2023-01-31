@@ -15,7 +15,7 @@ export const environmentPlugin = (data: string[] | StringRecord): Plugin => ({
 
     const env: StringRecord = Object.fromEntries(
       entries.map(([key, defaultValue]) => {
-        return [key, process.env[key] ?? defaultValue];
+        return [key, String(process.env[key] ?? defaultValue)];
       }),
     );
 

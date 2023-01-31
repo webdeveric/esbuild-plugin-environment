@@ -1,6 +1,6 @@
 import { build, PluginBuild } from 'esbuild';
 
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { environmentPlugin, PLUGIN_NAME } from './plugin';
 
@@ -57,6 +57,22 @@ describe('Usage with esbuild', () => {
     expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("true");');
   });
 
+  it('Environment variable values are strings', async () => {
+    const results = await build({
+      write: false,
+      stdin: {
+        contents: 'console.log(process.env.UNDEFINED_VAR)',
+      },
+      plugins: [
+        environmentPlugin({
+          UNDEFINED_VAR: JSON.stringify(process.env.UNDEFINED_VAR),
+        }),
+      ],
+    });
+
+    expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("undefined");');
+  });
+
   describe('Specifying array of environment variable names', () => {
     it('Undefined environment variables default to empty string', async () => {
       const results = await build({
@@ -71,7 +87,7 @@ describe('Usage with esbuild', () => {
     });
 
     it('Undefined environment variables default to empty string', async () => {
-      process.env.PLUGIN_TEST = 'true';
+      vi.stubEnv('PLUGIN_TEST', 'true');
 
       const results = await build({
         write: false,
@@ -80,8 +96,6 @@ describe('Usage with esbuild', () => {
         },
         plugins: [environmentPlugin(['PLUGIN_TEST'])],
       });
-
-      delete process.env.PLUGIN_TEST;
 
       expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("true");');
     });
