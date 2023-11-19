@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     unstubEnvs: true,
     coverage: {
-      provider: 'c8',
+      provider: 'v8',
     },
   },
 });
