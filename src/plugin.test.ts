@@ -1,8 +1,8 @@
-import { build, PluginBuild } from 'esbuild';
+import { build, type PluginBuild } from 'esbuild';
 
 import { describe, expect, it, vi } from 'vitest';
 
-import { environmentPlugin, PLUGIN_NAME } from './plugin';
+import { environmentPlugin, PLUGIN_NAME } from './plugin.js';
 
 describe.concurrent('environmentPlugin()', () => {
   it('Returns an esbuild plugin', () => {
@@ -86,7 +86,7 @@ describe('Usage with esbuild', () => {
       expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("");');
     });
 
-    it('Undefined environment variables default to empty string', async () => {
+    it('Defined environment variables are used', async () => {
       vi.stubEnv('PLUGIN_TEST', 'true');
 
       const results = await build({

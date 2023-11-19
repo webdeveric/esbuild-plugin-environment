@@ -2,6 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "Node10",
+    "verbatimModuleSyntax": false,
     "target": "ES2018",
     "outDir": "./dist/cjs"
   },
