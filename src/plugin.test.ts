@@ -1,4 +1,4 @@
-import { build, PluginBuild } from 'esbuild';
+import { build, type PluginBuild } from 'esbuild';
 
 import { describe, expect, it, vi } from 'vitest';
 
