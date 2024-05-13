@@ -5,6 +5,7 @@
     "env",
     "esbuild",
     "npmrc",
+    "nvmrc",
     "pnpm",
     "postbuild",
     "preinstall",
