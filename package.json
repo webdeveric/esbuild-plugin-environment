@@ -24,7 +24,7 @@
   "type": "module",
   "main": "./dist/cjs/plugin.js",
   "types": "./dist/types/plugin.d.ts",
-  "packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b",
+  "packageManager": "pnpm@9.11.0+sha512.0a203ffaed5a3f63242cd064c8fb5892366c103e328079318f78062f24ea8c9d50bc6a47aa3567cabefd824d170e78fa2745ed1f16b132e16436146b7688f19b",
   "engines": {
     "node": ">=18.14.0"
   },
@@ -70,21 +70,21 @@
     "esbuild-plugin-define": "^0.5.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.11",
-    "@vitest/coverage-v8": "^1.6.0",
-    "@webdeveric/eslint-config-ts": "^0.7.3",
-    "@webdeveric/prettier-config": "^0.2.0",
-    "cspell": "^8.8.1",
-    "esbuild": "^0.21.2",
-    "eslint": "^8.57.0",
+    "@types/node": "^20.16.5",
+    "@vitest/coverage-v8": "^2.1.1",
+    "@webdeveric/eslint-config-ts": "^0.11.0",
+    "@webdeveric/prettier-config": "^0.3.0",
+    "cspell": "^8.14.4",
+    "esbuild": "^0.24.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5",
-    "rimraf": "^5.0.7",
-    "typescript": "^5.4.5",
-    "vitest": "^1.6.0"
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.30.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "rimraf": "^5.0.10",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
   }
 }
