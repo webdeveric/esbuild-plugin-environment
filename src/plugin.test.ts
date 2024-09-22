@@ -12,29 +12,29 @@ describe.concurrent('environmentPlugin()', () => {
   });
 
   it('Modifies initialOptions.define', async () => {
-    const build: Partial<PluginBuild> = {
+    const pluginBuild: Partial<PluginBuild> = {
       initialOptions: {
         define: {},
       },
     };
 
-    await environmentPlugin({ test: 'test' }).setup(build as PluginBuild);
+    await environmentPlugin({ test: 'test' }).setup(pluginBuild as PluginBuild);
 
-    expect(build.initialOptions?.define).toMatchObject({
+    expect(pluginBuild.initialOptions?.define).toMatchObject({
       'process.env.test': '"test"',
     });
   });
 
   it('Accepts array of process.env keys', async () => {
-    const build: Partial<PluginBuild> = {
+    const pluginBuild: Partial<PluginBuild> = {
       initialOptions: {
         define: {},
       },
     };
 
-    await environmentPlugin(['PWD']).setup(build as PluginBuild);
+    await environmentPlugin(['PWD']).setup(pluginBuild as PluginBuild);
 
-    expect(build.initialOptions?.define).toMatchObject({
+    expect(pluginBuild.initialOptions?.define).toMatchObject({
       'process.env.PWD': JSON.stringify(process.cwd()),
     });
   });
