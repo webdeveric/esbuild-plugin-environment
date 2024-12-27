@@ -57,21 +57,26 @@ describe('Usage with esbuild', () => {
     expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("true");');
   });
 
-  it('Environment variable values are strings', async () => {
-    const results = await build({
-      write: false,
-      stdin: {
-        contents: 'console.log(process.env.UNDEFINED_VAR)',
-      },
-      plugins: [
-        environmentPlugin({
-          UNDEFINED_VAR: JSON.stringify(process.env.UNDEFINED_VAR),
-        }),
-      ],
-    });
+  it.each(['some string', 1_000_000, BigInt(Number.MAX_SAFE_INTEGER) * 2n, true, undefined, null])(
+    'Environment variable values are strings: %s',
+    async (value) => {
+      const results = await build({
+        write: false,
+        stdin: {
+          contents: 'console.log(process.env.VALUE);',
+        },
+        plugins: [
+          environmentPlugin({
+            VALUE: value,
+          }),
+        ],
+      });
 
-    expect(results.outputFiles.at(0)?.text.trim()).toBe('console.log("undefined");');
-  });
+      console.log(results.outputFiles.at(0)?.text);
+
+      expect(results.outputFiles.at(0)?.text.trim()).toBe(`console.log("${value}");`);
+    },
+  );
 
   describe('Specifying array of environment variable names', () => {
     it('Undefined environment variables default to empty string', async () => {
