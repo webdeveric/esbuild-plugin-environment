@@ -72,8 +72,6 @@ describe('Usage with esbuild', () => {
         ],
       });
 
-      console.log(results.outputFiles.at(0)?.text);
-
       expect(results.outputFiles.at(0)?.text.trim()).toBe(`console.log("${value}");`);
     },
   );
