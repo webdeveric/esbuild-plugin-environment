@@ -20,19 +20,8 @@
       "@typescript-eslint/parser": [".ts", ".mts", ".cts"]
     }
   },
-  "rules": {},
-  "overrides": [
-    {
-      "files": ["*.ts"],
-      "parserOptions": {
-        "project": ["./tsconfig.json"]
-      }
-    },
-    {
-      "files": ["./*.{js,cjs,mjs,mts}"],
-      "parserOptions": {
-        "project": ["./tsconfig.project-files.json"]
-      }
-    }
-  ]
+  "parserOptions": {
+    "projectService": true
+  },
+  "rules": {}
 }
