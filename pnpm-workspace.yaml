@@ -12,3 +12,4 @@ minimumReleaseAge: 2880 # 2 days
 
 minimumReleaseAgeExclude:
   - commitlint-plugin-cspell
+  - esbuild-plugin-define@0.6.0

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       esbuild-plugin-define:
-        specifier: ^0.5.0
-        version: 0.5.0(esbuild@0.27.4)
+        specifier: ^0.6.0
+        version: 0.6.0(esbuild@0.27.4)
     devDependencies:
       '@commitlint/config-conventional':
         specifier: ^20.5.0
@@ -1730,9 +1730,9 @@ packages:
     resolution: {integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==}
     engines: {node: '>= 0.4'}
 
-  esbuild-plugin-define@0.5.0:
-    resolution: {integrity: sha512-GNchZYjo8nQHLYbvTIi9w6MXj1lzi1yPEnfsHpeTRbTx2g0+g79ngoU0N5hS5EQwfpzTUzZKETx16UO8W8dW0g==}
-    engines: {node: '>=18.14.0'}
+  esbuild-plugin-define@0.6.0:
+    resolution: {integrity: sha512-vUrl4I3mmJnjSGH6hmLrfYZFB8tBgKa8llz7PE3sKGQxnYbiFeI9sfCrjA879BCtp/PEG1rUtorZpXsV/efSMQ==}
+    engines: {node: '>=20.0.0'}
     peerDependencies:
       esbuild: '>=0.15'
 
@@ -5673,7 +5673,7 @@ snapshots:
       is-date-object: 1.1.0
       is-symbol: 1.1.1
 
-  esbuild-plugin-define@0.5.0(esbuild@0.27.4):
+  esbuild-plugin-define@0.6.0(esbuild@0.27.4):
     dependencies:
       esbuild: 0.27.4
 
